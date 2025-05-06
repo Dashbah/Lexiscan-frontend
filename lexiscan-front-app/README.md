@@ -74,6 +74,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 1) to start an app
 ### `npm install`
 ### `npm run start`
+### `npm install react-router-dom@5`
 2) to run test json API:
 ### ` npx json-server --watch data/db.json --port 8000`
 will be available at http://localhost:3000/
