@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2dfa64c5-0f28-4c62-90c8-ba23f486c5d0" name="Changes" comment="demo get json api">
-      <change afterPath="$PROJECT_DIR$/lexiscan-front-app/src/BlogDetails.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexiscan-front-app/src/Create.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexiscan-front-app/src/NotFound.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexiscan-front-app/src/useFetch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="2dfa64c5-0f28-4c62-90c8-ba23f486c5d0" name="Changes" comment="UseFront auth">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexiscan-front-app/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/lexiscan-front-app/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexiscan-front-app/data/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/lexiscan-front-app/data/db.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lexiscan-front-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/lexiscan-front-app/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lexiscan-front-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/lexiscan-front-app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lexiscan-front-app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/lexiscan-front-app/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexiscan-front-app/src/BlogList.js" beforeDir="false" afterPath="$PROJECT_DIR$/lexiscan-front-app/src/BlogList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexiscan-front-app/src/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/lexiscan-front-app/src/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexiscan-front-app/src/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/lexiscan-front-app/src/Navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexiscan-front-app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/lexiscan-front-app/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,9 +141,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1746454420509</updated>
-      <workItem from="1746454423962" duration="5584000" />
+      <workItem from="1746454423962" duration="8667000" />
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="demo get json api">
+      <created>1746524234043</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1746524234043</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +169,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="demo get json api" />
-    <option name="LAST_COMMIT_MESSAGE" value="demo get json api" />
+    <MESSAGE value="UseFront auth" />
+    <option name="LAST_COMMIT_MESSAGE" value="UseFront auth" />
   </component>
 </project>
