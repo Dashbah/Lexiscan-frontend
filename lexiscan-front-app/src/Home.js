@@ -8,6 +8,8 @@ const Home = () => {
         <div className="home">
             {error && <div>{error}</div>}
             {isPending && <div>Loading...</div>}
+            {/*TODO: add this via useState*/}
+            <p>Hello, {localStorage.getItem('username')}!</p>
             {blogs && <BlogList blogs={blogs} title="All Blogs"/>}
         </div>
     );
