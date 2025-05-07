@@ -1,56 +1,45 @@
-import {useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-const Create = () => {
-    const [title, setTitle] = useState('new blog');
-    const [body, setBody] = useState('new blog body');
-    const [author, setAuthor] = useState(localStorage.getItem('username'));
+const CreateChat = () => {
+    // const [chatUId, getChatUId] = useState('');
     const [isPending, setIsPending] = useState(false);
     const history = useHistory();
+
+    const token = localStorage.getItem('token');
 
     const handleSubmit = (e) => {
         // prevents from reloading while submit
         e.preventDefault();
-        const blog = {title, body, author};
         setIsPending(true);
 
-        fetch('http://localhost:8000/blogs', {
+        fetch('http://89.169.154.190:8080/api/chat/new', {
             method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(blog)
-        }).then(() => {
-            console.log('new blog added');
-            setIsPending(false);
-            history.push('/'); // redirects to a home page
+            headers: {
+                'Authorization': token ? `Bearer ${token}` : '',
+                'Accept': '*/*',
+            }
+        }).then(res => {
+            if (res.ok) {
+                console.log('new blog added');
+                setIsPending(false);
+                history.push('/'); // redirects to a home page
+            } else if (res.status === 403) {
+                throw new Error('Unauthorized');
+            } else {
+                throw new Error('Adding chat error');
+            }
         })
-        
+
     }
 
     return (
         <div className="create">
-            <h2>Add a New Blog</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Blog title:</label>
-                <input
-                    type="text"
-                    required
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-                <label>Blog body:</label>
-                <textarea
-                    required
-                    value={body}
-                    onChange={(e) => setBody(e.target.value)}
-                />
-                {!isPending && <button>Add Blog</button>}
-                {isPending && <button disabled>Adding Blog...</button>}
-                <p>title: {title}</p>
-                <p>body: {body}</p>
-                <p>author: {localStorage.getItem('username')}</p>
-            </form>
+            <h2>Add a New Chat</h2>
+            {!isPending && <button onClick={handleSubmit}>Add</button>}
+            {isPending && <button disabled>Adding new Chat...</button>}
         </div>
     );
 }
 
-export default Create;
+export default CreateChat;

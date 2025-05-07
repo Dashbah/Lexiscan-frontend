@@ -6,41 +6,41 @@ import {
     Route,
     Switch
 } from "react-router-dom";
-import Create from "./Create";
+import CreateChat from "./Create";
 import BlogDetails from "./BlogDetails";
 
-import {AuthProvider} from './contexts/AuthContext';
-import {ProtectedRoute} from './components/ProtectedRoute';
-import {RegisterForm} from './components/RegisterForm';
-import {LoginForm} from './components/LoginForm';
-import {Logout} from './components/Logout';
+import { AuthProvider } from './contexts/AuthContext';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import { RegisterForm } from './components/RegisterForm';
+import { LoginForm } from './components/LoginForm';
+import { Logout } from './components/Logout';
 
 function App() {
     return (
         <Router>
             <AuthProvider>
                 <div className="App">
-                    <Navbar/>
+                    <Navbar />
                     <div className="content">
                         <Switch>
-                            <ProtectedRoute path="/create" component={Create} />
+                            <ProtectedRoute path="/create-chat" component={CreateChat} />
                             <Route path="/blogs/:id">
-                                <BlogDetails/>
+                                <BlogDetails />
                             </Route>
                             <Route path="/register">
-                                <RegisterForm/>
+                                <RegisterForm />
                             </Route>
                             <Route path="/login">
-                                <LoginForm/>
+                                <LoginForm />
                             </Route>
                             <Route path="/logout">
-                                <Logout/>
+                                <Logout />
                             </Route>
                             <Route exact path="/">
-                                <Home/>
+                                <Home />
                             </Route>
                             <Route path="*">
-                                <NotFound/>
+                                <NotFound />
                             </Route>
                         </Switch>
                     </div>

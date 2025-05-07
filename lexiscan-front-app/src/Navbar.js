@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
@@ -6,11 +6,11 @@ const Navbar = () => {
             <h1>THE NAVBAR</h1>
             <div className="links">
                 <Link to="/">Home</Link>
-                <Link to="/create" style={{
+                <Link to="/create-chat" style={{
                     color: "white",
                     backgroundColor: '#f1356d',
                     borderRadius: '8px'
-                }}>New Blog</Link>
+                }}>New Chat</Link>
             </div>
         </nav>
     );

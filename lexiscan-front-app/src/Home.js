@@ -1,8 +1,8 @@
-import BlogList from "./BlogList";
+import ChatHistoryList from "./ChatHistoryList";
 import useFetch from "./useFetch";
 
 const Home = () => {
-    const {data: blogs, isPending, error} = useFetch('http://localhost:8000/blogs');
+    const { data: chats, isPending, error } = useFetch('http://89.169.154.190:8080/api/chat/history/all-user-history');
 
     return (
         <div className="home">
@@ -10,7 +10,7 @@ const Home = () => {
             {isPending && <div>Loading...</div>}
             {/*TODO: add this via useState*/}
             <p>Hello, {localStorage.getItem('username')}!</p>
-            {blogs && <BlogList blogs={blogs} title="All Blogs"/>}
+            {chats && <ChatHistoryList chats={chats.chatHistoryRs} title="All Chats" />}
         </div>
     );
 }

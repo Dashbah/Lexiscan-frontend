@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
 // has to be started with 'use'
 const useFetch = (url) => {
@@ -6,13 +6,26 @@ const useFetch = (url) => {
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
 
+    const token = localStorage.getItem('token');
+
+    const headers = {
+        'Authorization': token ? `Bearer ${token}` : '',
+        'Accept': '*/*',
+    };
+
     // starts while loading
     useEffect(() => {
         const abortController = new AbortController();
         setIsPending(true);
-        fetch(url, {signal: abortController.signal})
+        fetch(url, {
+            signal: abortController.signal,
+            headers
+        })
             .then(res => {
                 console.log(res)
+                if (res.status === 403) {
+                    throw new Error('Unauthorized');
+                }
                 if (!res.ok) {
                     throw Error('could not fetch the data GET')
                 }
@@ -35,7 +48,7 @@ const useFetch = (url) => {
         return () => abortController.abort();
     }, [url]);
 
-    return {data, isPending, error};
+    return { data, isPending, error };
 }
 
 export default useFetch;
