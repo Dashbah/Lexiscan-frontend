@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom';
 const Create = () => {
     const [title, setTitle] = useState('new blog');
     const [body, setBody] = useState('new blog body');
-    const [author, setAuthor] = useState('dashbah');
+    const [author, setAuthor] = useState(localStorage.getItem('username'));
     const [isPending, setIsPending] = useState(false);
     const history = useHistory();
 
@@ -43,18 +43,11 @@ const Create = () => {
                     value={body}
                     onChange={(e) => setBody(e.target.value)}
                 />
-                <label>Blog author:</label>
-                <select
-                    value={author}
-                    onChange={(e) => setAuthor(e.target.value)}>
-                    <option value="dashbah">dashbah</option>
-                    <option value="alex">alex</option>
-                </select>
                 {!isPending && <button>Add Blog</button>}
                 {isPending && <button disabled>Adding Blog...</button>}
                 <p>title: {title}</p>
                 <p>body: {body}</p>
-                <p>author: {author}</p>
+                <p>author: {localStorage.getItem('username')}</p>
             </form>
         </div>
     );

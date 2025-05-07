@@ -11,6 +11,7 @@ import BlogDetails from "./BlogDetails";
 
 import {AuthProvider} from './contexts/AuthContext';
 import {ProtectedRoute} from './components/ProtectedRoute';
+import {RegisterForm} from './components/RegisterForm';
 import {LoginForm} from './components/LoginForm';
 import {Logout} from './components/Logout';
 
@@ -22,11 +23,12 @@ function App() {
                     <Navbar/>
                     <div className="content">
                         <Switch>
-                            <Route path="/create">
-                                <Create/>
-                            </Route>
+                            <ProtectedRoute path="/create" component={Create} />
                             <Route path="/blogs/:id">
                                 <BlogDetails/>
+                            </Route>
+                            <Route path="/register">
+                                <RegisterForm/>
                             </Route>
                             <Route path="/login">
                                 <LoginForm/>

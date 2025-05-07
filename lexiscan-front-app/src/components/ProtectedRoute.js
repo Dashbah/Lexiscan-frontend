@@ -1,16 +1,25 @@
-import {Redirect} from 'react-router-dom';
+import React from 'react';
+import {Route, Redirect} from 'react-router-dom';
 import {useAuth} from '../contexts/AuthContext';
+import SorryNotAuth from './SorryNotAuth';
 
-export const ProtectedRoute = ({children}) => {
+export const ProtectedRoute = ({component: Component, ...rest}) => {
     const {user, loading} = useAuth();
 
     if (loading) {
         return <div>Loading...</div>;
     }
 
-    if (!user) {
-        return <Redirect to="/login" replace/>;
-    }
-
-    return children;
+    return (
+        <Route
+            {...rest}
+            render={props =>
+                user ? (
+                    <Component {...props} />
+                ) : (
+                    <SorryNotAuth/>
+                )
+            }
+        />
+    );
 };
