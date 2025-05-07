@@ -12,14 +12,14 @@ export const AuthProvider = ({children}) => {
         setLoading(false);
     }, []);
 
-    const login = async (email, password) => {
+    const login = async (username, email, password) => {
         try {
             console.log('trying to login');
             const response = await fetch('http://89.169.154.190:8080/auth/register', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    username: email,
+                    username: username,
                     email: email,
                     password: password,
                     role: 'CLIENT'
@@ -32,12 +32,17 @@ export const AuthProvider = ({children}) => {
 
             if (response.ok && data) {
                 localStorage.setItem('token', data);
-                localStorage.setItem('usename', email);
-                setUser(data.user);
+                localStorage.setItem('username', username);
+                localStorage.setItem('email', email);
+
+                setUser({
+                    username: username,
+                    email: email
+                })
                 console.log('user set');
                 return true;
             } else {
-                throw new Error('response status was not ok or had empty body');
+                throw new Error('response status was not ok or had an empty body');
             }
         } catch (error) {
             console.error('Login failed:', error);
@@ -47,7 +52,10 @@ export const AuthProvider = ({children}) => {
 
     const logout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        localStorage.removeItem('email');
         setUser(null);
+        return true;
     };
 
     const checkAuthStatus = async () => {

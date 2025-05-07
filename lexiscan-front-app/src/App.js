@@ -12,6 +12,7 @@ import BlogDetails from "./BlogDetails";
 import {AuthProvider} from './contexts/AuthContext';
 import {ProtectedRoute} from './components/ProtectedRoute';
 import {LoginForm} from './components/LoginForm';
+import {Logout} from './components/Logout';
 
 function App() {
     return (
@@ -29,6 +30,9 @@ function App() {
                             </Route>
                             <Route path="/login">
                                 <LoginForm/>
+                            </Route>
+                            <Route path="/logout">
+                                <Logout/>
                             </Route>
                             <Route exact path="/">
                                 <Home/>
