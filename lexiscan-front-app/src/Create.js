@@ -1,17 +1,17 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import './styles/CreateChatCard.css';
 
 const CreateChat = () => {
-    // const [chatUId, getChatUId] = useState('');
     const [isPending, setIsPending] = useState(false);
+    const [isError, setIsError] = useState(false);
     const history = useHistory();
-
     const token = localStorage.getItem('token');
 
-    const handleSubmit = (e) => {
-        // prevents from reloading while submit
+    const handleCreate = (e) => {
         e.preventDefault();
         setIsPending(true);
+        setIsError(false);
 
         fetch('http://89.169.154.190:8080/api/chat/new', {
             method: 'POST',
@@ -21,25 +21,26 @@ const CreateChat = () => {
             }
         }).then(res => {
             if (res.ok) {
-                console.log('new blog added');
                 setIsPending(false);
-                history.push('/'); // redirects to a home page
+                window.location.reload();
             } else if (res.status === 403) {
-                throw new Error('Unauthorized');
+                history.push('/login');
             } else {
-                throw new Error('Adding chat error');
+                setIsPending(false);
+                setIsError(true);
             }
-        })
-
-    }
+        });
+    };
 
     return (
-        <div className="create">
-            <h2>Add a New Chat</h2>
-            {!isPending && <button onClick={handleSubmit}>Add</button>}
-            {isPending && <button disabled>Adding new Chat...</button>}
-        </div>
+        <button className="chat-add-card" onClick={handleCreate} disabled={isPending}>
+            <span className="chat-add-icon">＋</span>
+            <span className="chat-add-text">
+                {isPending ? "Creating..." : "Add new chat"}
+            </span>
+            {isError && <span className="chat-add-error">Error!</span>}
+        </button>
     );
-}
+};
 
 export default CreateChat;

@@ -1,5 +1,5 @@
 import Navbar from "./Navbar";
-import Home from "./Home";
+import Home from "./components/Home";
 import NotFound from "./NotFound"
 import {
     BrowserRouter as Router,
@@ -7,13 +7,15 @@ import {
     Switch
 } from "react-router-dom";
 import CreateChat from "./Create";
-import BlogDetails from "./BlogDetails";
+import ChatDetails from "./ChatDetails";
 
 import { AuthProvider } from './contexts/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { RegisterForm } from './components/RegisterForm';
 import { LoginForm } from './components/LoginForm';
 import { Logout } from './components/Logout';
+import HomeHero from "./components/HomeHero";
+import ChatHistoryList from "./components/ChatHistoryList";
 
 function App() {
     return (
@@ -23,9 +25,13 @@ function App() {
                     <Navbar />
                     <div className="content">
                         <Switch>
-                            <ProtectedRoute path="/create-chat" component={CreateChat} />
-                            <Route path="/blogs/:id">
-                                <BlogDetails />
+                            <ProtectedRoute exact path="/create-chat" component={CreateChat} />
+                            <ProtectedRoute exact path="/chats" component={ChatHistoryList} />
+                            <Route path="/chats/:chatUId">
+                                <ChatDetails />
+                            </Route>
+                            <Route path="/hello">
+                                <HomeHero />
                             </Route>
                             <Route path="/register">
                                 <RegisterForm />

@@ -3,14 +3,11 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
     return (
         <nav className="navbar">
-            <h1>THE NAVBAR</h1>
+            <h1><Link to='/hello'>LEXISCAN</Link></h1>
             <div className="links">
-                <Link to="/">Home</Link>
-                <Link to="/create-chat" style={{
-                    color: "white",
-                    backgroundColor: '#f1356d',
-                    borderRadius: '8px'
-                }}>New Chat</Link>
+                <Link to="/register">Register</Link>
+                <Link to="/login">Login</Link>
+                <Link to="/logout">Logout</Link>
             </div>
         </nav>
     );

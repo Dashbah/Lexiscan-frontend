@@ -1,0 +1,108 @@
+.chat-list-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    width: 100vw;
+}
+
+.chat-list-title {
+    color: #29f0b4;
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.chat-list-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+}
+
+@media (max-width: 700px) {
+    .chat-list-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+}
+
+.chat-card {
+    display: flex;
+    align-items: center;
+    background: #191a1d;
+    border-radius: 18px;
+    box-shadow: 0 4px 32px rgba(41, 240, 180, 0.07), 0 1.5px 4px rgba(0, 0, 0, 0.12);
+    padding: 20px 28px;
+    text-decoration: none;
+    transition: box-shadow 0.22s, transform 0.22s, border 0.22s;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.chat-card:hover {
+    box-shadow: 0 8px 40px rgba(41, 240, 180, 0.13), 0 2px 8px rgba(0, 0, 0, 0.16);
+    border: 2px solid #29f0b4;
+    transform: translateY(-2px) scale(1.012);
+}
+
+.chat-avatar {
+    background: linear-gradient(135deg, #29f0b4, #2cfca2 70%);
+    color: #101014;
+    font-size: 1.6rem;
+    font-weight: 700;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 22px;
+    box-shadow: 0 2px 12px rgba(41, 240, 180, 0.17);
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.chat-card-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.chat-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-card-title {
+    color: #ededed;
+    font-size: 1.16rem;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+}
+
+.chat-card-meta {
+    color: #b0f5e7;
+    font-size: 0.98rem;
+    margin-top: 6px;
+}
+
+.chat-card-arrow {
+    font-size: 1.5rem;
+    color: #29f0b4;
+    margin-left: 18px;
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.chat-card:hover .chat-card-arrow {
+    opacity: 1;
+    transform: translateX(3px) scale(1.08);
+}
