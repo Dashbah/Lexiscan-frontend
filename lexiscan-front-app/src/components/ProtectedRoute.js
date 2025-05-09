@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import SorryNotAuth from './SorryNotAuth';
+import { LoginForm } from './LoginForm';
 
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
     const { user, loading } = useAuth();
@@ -17,7 +18,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
                 localStorage.getItem('username') ? (
                     <Component {...props} />
                 ) : (
-                    <SorryNotAuth />
+                    <LoginForm/>
                 )
             }
         />

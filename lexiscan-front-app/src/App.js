@@ -14,7 +14,6 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 import { RegisterForm } from './components/RegisterForm';
 import { LoginForm } from './components/LoginForm';
 import { Logout } from './components/Logout';
-import HomeHero from "./components/HomeHero";
 import ChatHistoryList from "./components/ChatHistoryList";
 
 function App() {
@@ -29,9 +28,6 @@ function App() {
                             <ProtectedRoute exact path="/chats" component={ChatHistoryList} />
                             <Route path="/chats/:chatUId">
                                 <ChatDetails />
-                            </Route>
-                            <Route path="/hello">
-                                <HomeHero />
                             </Route>
                             <Route path="/register">
                                 <RegisterForm />

@@ -10,7 +10,7 @@ const Home = () => (
         LexiScan uses machine learning to analyze handwriting and highlight areas with potential dyslexia markers.<br />
         Upload a photo and get instant, actionable insights.
       </p>
-      <a href="/login" className="hero-launch-btn">Get Started</a>
+      <a href="/chats" className="hero-launch-btn">Get Started</a>
     </div>
     <div className="hero-bg"></div>
   </div>
