@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import useFetch from "./useFetch";
+import useFetch from "../useFetch";
 import { useHistory } from 'react-router-dom';
-import ImageUpload from "./components/ImageUpload";
+import ImageUpload from "./ImageUpload";
 
 const ChatDetails = () => {
     const { chatUId } = useParams();

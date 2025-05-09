@@ -6,8 +6,8 @@ import {
     Route,
     Switch
 } from "react-router-dom";
-import CreateChat from "./Create";
-import ChatDetails from "./ChatDetails";
+import CreateChat from "./components/Create";
+import ChatDetails from "./components/ChatDetails";
 
 import { AuthProvider } from './contexts/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';

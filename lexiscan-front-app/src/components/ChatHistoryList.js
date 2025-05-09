@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import useFetch from "../useFetch";
 import "../styles/ChatHistoryList.css";
-import CreateChat from "../Create";
+import CreateChat from "./Create";
 
 const ChatHistoryList = () => {
     const { data: chats, isPending, error } = useFetch('http://89.169.154.190:8080/api/chat/history/all-user-history');
