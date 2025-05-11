@@ -41,6 +41,7 @@ const ImageUpload = ({ chatUId }) => {
             if (response.ok) {
                 const result = await response.json();
                 setUploadResult(result);
+                window.location.reload();
             } else if (response.status === 403) {
                 history.push('/login');
             } else {
@@ -63,9 +64,6 @@ const ImageUpload = ({ chatUId }) => {
             {uploadResult && (
                 <div>
                     <h3>Upload successful!</h3>
-                    <p>imageUploadedUId: {uploadResult.imageUploadedUId}</p>
-                    <p>imageResultUId: {uploadResult.imageResultUId}</p>
-                    <p>processingStatus: {uploadResult.processingStatus}</p>
                 </div>
             )}
             {error && <p style={{ color: 'red' }}>Error: {error}</p>}

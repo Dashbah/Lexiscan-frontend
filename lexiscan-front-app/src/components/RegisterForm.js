@@ -9,6 +9,7 @@ export const RegisterForm = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const { register } = useAuth();
+    const { registerError } = useAuth();
     const history = useHistory();
 
     const handleSubmit = async (e) => {
@@ -28,23 +29,27 @@ export const RegisterForm = () => {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Username"
+                    required="true"
                 />
                 <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
+                    required="true"
                 />
                 <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
+                    required="true"
                 />
                 <button type="submit">Register</button>
                 <div className="auth-switch">
                     Already have an account? <Link to="/login">Sign in</Link>
                 </div>
+                {registerError && <p style={{color: 'red', display: 'flex', justifyContent: 'center'}}>{registerError}</p>}
             </form>
         </div>
     );

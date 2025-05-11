@@ -7,6 +7,8 @@ export const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const { login } = useAuth();
+    const { error } = useAuth();
+
     const history = useHistory();
 
     const handleSubmit = async (e) => {
@@ -26,17 +28,20 @@ export const LoginForm = () => {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Username"
+                    required="true"
                 />
                 <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
+                    required="true"
                 />
                 <button type="submit">Login</button>
                 <div className="auth-switch">
                     Don't have an account? <Link to="/register">Register</Link>
                 </div>
+                {error && <p style={{color: 'red', display: 'flex', justifyContent: 'center'}}>{error}</p>}
             </form>
         </div>
     );

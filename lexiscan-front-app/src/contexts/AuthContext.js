@@ -5,6 +5,8 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [registerError, setRegisterError] = useState(null);
 
     useEffect(() => {
         // Check if user is logged in when the app loads
@@ -14,6 +16,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (username, password) => {
         try {
+            setError(null);
             console.log('trying to register ' + username);
             const response = await fetch('http://89.169.154.190:8080/auth/login', {
                 method: 'POST',
@@ -37,7 +40,11 @@ export const AuthProvider = ({ children }) => {
                 console.log('user set, logged in');
                 console.log(user);
                 return true;
+            } else if (response.status === 400 && data === "Username doesn't exists") {
+                setError('Username does not exists');
+                throw new Error('Username does not exists');
             } else {
+                setError('Sorry :( error occured');
                 throw new Error('response status was not ok or had an empty body');
             }
         } catch (error) {
@@ -48,6 +55,7 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (username, email, password) => {
         try {
+            setRegisterError(null)
             console.log('trying to register ' + username);
             const response = await fetch('http://89.169.154.190:8080/auth/register', {
                 method: 'POST',
@@ -60,7 +68,7 @@ export const AuthProvider = ({ children }) => {
                 })
             });
 
-            const data = response.text();
+            const data = await response.text();
 
             console.log(data);
 
@@ -75,7 +83,11 @@ export const AuthProvider = ({ children }) => {
                 })
                 console.log('user set, registered');
                 return true;
+            } else if (response.status === 400) {
+                setRegisterError('Username already exists');
+                throw new Error('Username already exists');
             } else {
+                setRegisterError('Sorry :( error occured');
                 throw new Error('response status was not ok or had an empty body');
             }
         } catch (error) {
@@ -89,6 +101,8 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('username');
         localStorage.removeItem('email');
         setUser(null);
+        setError(null);
+        setRegisterError(null);
         return true;
     };
 
@@ -115,7 +129,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, register, login, logout, loading }}>
+        <AuthContext.Provider value={{ user, register, login, logout, loading, error, registerError }}>
             {!loading && children}
         </AuthContext.Provider>
     );

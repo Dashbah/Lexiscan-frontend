@@ -172,7 +172,7 @@ const ImageInfo = ({ imageUploadedUId, imageResultUId }) => {
                                     fontSize: "0.9rem",
                                 }}
                             >
-                                Показать оригинал
+                                Show original image
                             </button>
                         </div>
                     )}
