@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './styles/CreateChatCard.css';
+import '../styles/CreateChatCard.css';
 
 const CreateChat = () => {
     const [isPending, setIsPending] = useState(false);

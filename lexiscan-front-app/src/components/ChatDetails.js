@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useFetch from "../useFetch";
 import { useHistory } from 'react-router-dom';
 import ImageUpload from "./ImageUpload";
+import ImageInfo from "./ImageInfo";
 
 const ChatDetails = () => {
     const { chatUId } = useParams();
@@ -17,14 +18,14 @@ const ChatDetails = () => {
                     <h2>{chat.chatName}</h2>
                     <ImageUpload chatUId={chat.chatUId} />
                     {chat.imageProcessingImages.map((imageInfo) => (
-                        <div className="image-info" key={imageInfo.imageUId}>
-                            <p>imageUId: {imageInfo.imageUId}</p>
-                            <p>percentage: {imageInfo.percentage}</p>
-                            <p>processingStatus: {imageInfo.processingStatus}</p>
-                        </div>
-                    ))
-                    }
-                    {/* <button onClick={handleClick}>delete</button> */}
+                        imageInfo.imageResultUId ? (
+                            <ImageInfo
+                                key={imageInfo.imageUploadedUId}
+                                imageUploadedUId={imageInfo.imageUploadedUId}
+                                imageResultUId={imageInfo.imageResultUId}
+                            />
+                        ) : null
+                    ))}
                 </article>
             )}
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./HomeHero.css";
+import "../styles/HomeHero.css";
 
 const Home = () => (
   <div className="hero-root">

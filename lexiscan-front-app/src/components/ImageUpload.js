@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const ImageUpload = ({ chatUId }) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [uploading, setUploading] = useState(false);
     const [uploadResult, setUploadResult] = useState(null);
     const [error, setError] = useState(null);
+    const history = useHistory();
 
     const token = localStorage.getItem('token');
 
@@ -36,12 +38,14 @@ const ImageUpload = ({ chatUId }) => {
                 body: formData,
             });
 
-            if (!response.ok) {
+            if (response.ok) {
+                const result = await response.json();
+                setUploadResult(result);
+            } else if (response.status === 403) {
+                history.push('/login');
+            } else {
                 throw new Error(`Upload failed with status ${response.status}`);
             }
-
-            const result = await response.json();
-            setUploadResult(result);
         } catch (err) {
             setError(err.message);
         } finally {
@@ -51,7 +55,7 @@ const ImageUpload = ({ chatUId }) => {
 
     return (
         <div className='image-upload'>
-            <h2>Upload Image</h2>
+            <h2>Upload new image</h2>
             <input type="file" accept="image/*" onChange={handleFileChange} />
             <button onClick={handleUpload} disabled={uploading}>
                 {uploading ? 'Uploading...' : 'Upload'}
@@ -59,8 +63,9 @@ const ImageUpload = ({ chatUId }) => {
             {uploadResult && (
                 <div>
                     <h3>Upload successful!</h3>
-                    <p>confidence: {uploadResult.confidence}</p>
-                    <p>prediction type: {uploadResult.prediction}</p>
+                    <p>imageUploadedUId: {uploadResult.imageUploadedUId}</p>
+                    <p>imageResultUId: {uploadResult.imageResultUId}</p>
+                    <p>processingStatus: {uploadResult.processingStatus}</p>
                 </div>
             )}
             {error && <p style={{ color: 'red' }}>Error: {error}</p>}
