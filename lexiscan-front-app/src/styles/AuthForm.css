@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
+
+.auth-form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    width: 100vw;
+}
+
+.auth-form {
+    background: rgba(32, 33, 36, 0.98);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(41, 240, 180, 0.10), 0 1.5px 4px rgba(0, 0, 0, 0.12);
+    padding: 36px 32px 28px 32px;
+    min-width: 320px;
+    max-width: 340px;
+    margin: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.auth-form h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #ededed;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+.auth-form input {
+    background: #191a1d;
+    color: #ededed;
+    border: 1.5px solid #23232b;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 1rem;
+    transition: border 0.2s, background 0.2s;
+}
+
+.auth-form input:focus {
+    border: 1.5px solid #29f0b4;
+    outline: none;
+    background: #23232b;
+}
+
+.auth-form button {
+    background: transparent;
+    color: #29f0b4;
+    border: 2px solid #29f0b4;
+    padding: 12px 0;
+    border-radius: 12px;
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.auth-form button:hover {
+    background: #29f0b4;
+    color: #111215;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 0.98rem;
+    color: #bdbdbd;
+}
+
+.auth-switch a {
+    color: #29f0b4;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 6px;
+    transition: color 0.2s;
+}
+
+.auth-switch a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 700px) {
+    .auth-form-container {
+        justify-content: center;
+        padding-top: 64px;
+    }
+
+    .auth-form {
+        margin-left: 0;
+        min-width: 92vw;
+        max-width: 96vw;
+        padding: 28px 8vw 24px 8vw;
+    }
+}
